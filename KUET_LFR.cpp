@@ -2,12 +2,12 @@
 
 
 // constructor define
-Led::Led(int pin) {                                                          // LED constructor
+Led::Led(uint8_t pin) {                                                          // LED constructor
   pinNumber = pin;
   pinMode(pinNumber, OUTPUT);
 }
 
-Motor::Motor(int pwm, int forward, int backward) {                           // MOTOR constructor
+Motor::Motor(uint8_t pwm, uint8_t forward, uint8_t backward) {                           // MOTOR constructor
   pwmPIN = pwm;
   forwardPIN = forward;
   backwardPIN = backward;
@@ -83,7 +83,7 @@ void Motor::Forward(int ms) {                                                  /
   digitalWrite(forwardPIN, HIGH);
   digitalWrite(backwardPIN, LOW);
 }
-void Motor::Backward(int ms) {                                                 //motor backward
+void Motor::Backward(uint8_t ms) {                                                 //motor backward
   analogWrite(pwmPIN, ms);
   digitalWrite(forwardPIN, LOW);
   digitalWrite(backwardPIN, HIGH);
@@ -95,7 +95,7 @@ void Motor::Stop() {                                                           /
 }
 
 //Lfr methods definitions
-void Robot::Forward(int ms) {                                                    // Lfr forward move at "ms" speed
+void Robot::Forward(uint8_t ms) {                                                    // Lfr forward move at "ms" speed
   analogWrite(rm, ms);
   analogWrite(lm, ms);
   digitalWrite(rmf, HIGH);
@@ -103,7 +103,7 @@ void Robot::Forward(int ms) {                                                   
   digitalWrite(lmf, HIGH);
   digitalWrite(lmb, LOW);
 }
-void Robot::Backward(int ms) {                                                  // Lfr backward move at "ms" speed
+void Robot::Backward(uint8_t ms) {                                                  // Lfr backward move at "ms" speed
   analogWrite(rm, ms);
   analogWrite(lm, ms);
   digitalWrite(rmf, LOW);
@@ -119,7 +119,7 @@ void Robot::Stop() {                                                            
   digitalWrite(lmf, LOW);
   digitalWrite(lmb, LOW);
 }
-void Robot::Break(int ms, int Time) {                                            // Breaking system for Lfr, operation runs for "Time" miliseconds
+void Robot::Break(uint8_t ms, uint8_t Time) {                                            // Breaking system for Lfr, operation runs for "Time" miliseconds
   analogWrite(rm, ms);
   analogWrite(lm, ms);
   digitalWrite(rmf, LOW);
@@ -128,7 +128,7 @@ void Robot::Break(int ms, int Time) {                                           
   digitalWrite(lmb, HIGH);
   delay(Time);
 }
-void Robot::rightTurn(int ms) {                                                // Lfr right turns
+void Robot::rightTurn(uint8_t ms) {                                                // Lfr right turns
   analogWrite(rm, ms);
   analogWrite(lm, ms);
   digitalWrite(rmf, LOW);
@@ -136,7 +136,7 @@ void Robot::rightTurn(int ms) {                                                /
   digitalWrite(lmf, HIGH);
   digitalWrite(lmb, LOW);
 }
-void Robot::leftTurn(int ms) {                                                       // Lfr left turns
+void Robot::leftTurn(uint8_t ms) {                                                       // Lfr left turns
   analogWrite(rm, ms);
   analogWrite(lm, ms);
   digitalWrite(rmf, HIGH);
